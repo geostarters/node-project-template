@@ -1,0 +1,49 @@
+{
+  "name": "tool-project-template",
+  "version": "1.0.0",
+  "description": "Template form Node backend tools",
+  "main": "index.js",
+  "keywords": [
+    "node"
+  ],
+  "author": "@geostarters",
+  "license": "MIT",
+  "scripts": {
+    "build": "gulp build",
+    "build-docs": "documentation build --github --format json --config ./docs/documentation.yml --output docs/components/api.json src/common/*/*.js",
+    "dev": "nodemon -w src",
+    "lint": "eslint --fix --cache --ignore-path .gitignore src docs",
+    "release": "run-s test build",
+    "start": "run-s build start-node",
+    "start-node": "node --trace-warnings dist/index.js",
+    "test": "run-s lint test-flow test-unit",
+    "test-unit": "tap --reporter classic --no-coverage test/unit",
+    "test-flow": "flow .",
+    "test-cov": "nyc --require=flow-remove-types/register --reporter=text-summary --reporter=lcov --cache npm run test-unit"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.0",
+    "eslint-config-geostart": "git+https://github.com/geostarters/eslint-config-geostart.git",
+    "gulp-flow-remove-types": "^1.0.0",
+    "morgan": "^1.9.1",
+    "tap": "^11.1.0"
+  },
+  "devDependencies": {
+    "babel-plugin-unassert": "^2.1.2",
+    "coveralls": "^3.0.0",
+    "documentation": "^9.1.0",
+    "eslint-config-geostart": "git+https://github.com/geostarters/eslint-config-geostart.git",
+    "eslint-config-node": "^2.0.0",
+    "eslint-plugin-html": "^4.0.2",
+    "flow-bin": "^0.64.0",
+    "flow-coverage-report": "^0.4.1",
+    "flow-remove-types": "^1.2.3",
+    "gulp-flow-remove-types": "^1.0.0",
+    "flow-typed": "^2.3.0",
+    "gulp": "^4.0",
+    "gulp-babel": "^7.0.1",
+    "nodemon": "^1.18.9",
+    "npm-run-all": "^4.1.2"
+  }
+}
