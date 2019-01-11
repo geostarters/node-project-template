@@ -1,4 +1,5 @@
-'use strict';
+// @flow
+"use strict";
 const LatLon = require("./common/geo/latlon");
 
 
